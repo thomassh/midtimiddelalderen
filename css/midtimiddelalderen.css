@@ -1,0 +1,376 @@
+
+@charset "UTF-8";
+/* CSS Document */
+
+/* Globale */
+
+*, *:before, *:after {
+    padding:0;
+    margin:0;
+    font-size:100%;
+    box-sizing: inherit;
+}
+
+body, html {
+    height:100%; 
+    overflow:auto;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    font-size:62.5%; /*husk å bruk rem*/
+    background-color: #E6AE44;
+
+}
+
+img {
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+}
+
+a {
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+::-moz-selection { /* Code for Firefox */
+    color: white;
+    background: #E6AE44; 
+}
+
+::selection {
+    color: white;
+    background: #E6AE44; 
+}
+
+.italic {
+    font-style: italic;
+}
+
+#content {
+    top:70px;
+    position:absolute;
+    height: calc(100% - 70px);
+    height: -o-calc(100% - 70px); /* opera */
+    height: -webkit-calc(100% - 70px); /* google, safari */
+    height: -moz-calc(100% - 70px); /* firefox */    
+    width:100%;
+}
+
+#map {
+    width:100%;
+    height:100%;
+}
+
+nav {
+    position:absolute;
+    z-index:800;
+    width:100%;
+    height:70px;
+    top:0;
+    padding:.7rem 2.8rem;
+    background-color:#45C9B7;
+}
+
+nav ul {
+    list-style:none;
+    height:auto;
+    position:absolute;
+    top:45px;
+    right:60px;
+}
+
+nav ul li {
+    float:left;
+    margin:0 7px;
+}
+
+nav ul li a {
+    color:black;
+    font-size: 1.4rem;
+    font-family: 'Open Sans', sans-serif;
+    display:block;
+}
+
+nav ul li a:hover {
+    color:white;
+}
+
+.nav-item-container {
+    padding:3rem 5rem 3rem 5rem;
+    margin: 0 auto;
+    max-width:600px;
+}
+
+.nav-item-container h1, .nav-item-container p {
+    font-size: 1.4rem;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.nav-item-container h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.nav-item-container p {
+    margin-bottom:7px;
+}
+
+.nav-item-container a {
+    color:white;
+}
+
+.nav-item-container a:hover {
+    color:#45C9B7;
+}
+
+#logo {
+    position:relative;
+    z-index:900;
+    display:inline-block;
+    height:55px;
+    overflow:visible;
+}
+
+#logo img {
+    width:70px;
+    height:auto;
+    float:left;
+    position: relative;
+}
+
+#logo:first-child h1 {
+    font-family: 'Berkshire Swash', cursive;
+    font-size:3.5rem;
+    float:left;
+    color:black;
+    margin:17px 0px 0px 3px;
+}
+
+#madeby {
+    position:absolute;
+    right:10px;
+    bottom:25px;
+    z-index:100;
+    padding:10px;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.njm-logo {
+    position:relative;
+    width:80px;
+    height:auto;
+    margin-left:10px;
+}
+
+.tidvis-logo {
+    position:relative;
+    width:40px;
+    float:left;
+    cursor: pointer;
+}
+
+.tidvis-logo path {
+    transition: fill ease-in-out .3s ;
+}
+
+.tidvis-logo:hover path {
+    fill:white;
+}
+
+.tidvis-logo-submenu {
+    width:40px;
+    top:9px;
+    left:0px;
+    position:relative;
+    right:40px;
+    cursor: pointer;
+    z-index:200;
+}
+
+.tidvis-logo-submenu path {
+    transition: fill ease-in-out .3s ;
+    fill:black;
+}
+
+.tidvis-logo-submenu:hover path {
+    fill:white;
+}
+
+.njm-logo-submenu {
+    width:60px;
+    height:auto;
+    top:9px;
+    margin-left:40px;
+}
+
+/*iframes*/
+.gm-style-iw {
+	top: 15px !important;
+	background-color:#45C9B7;
+	box-shadow: 0 0px 6px rgba(0, 0, 0, 0.5);
+    text-align:center;
+    padding-top:10px;
+	border-radius: 10px 10px 10px 10px;
+}
+
+.iw-title {
+    font-size: 1.6rem;
+    font-family: 'Open Sans', sans-serif;
+    padding:5px;
+    padding-bottom:7px;
+    color: black;
+}
+
+#iw-container {
+    margin: 0px !important;
+    padding:0px !important;
+    overflow-x: hidden;
+}
+
+iframe {
+    padding:0px !important;
+    margin:0px !important;
+    max-width:100% !important;
+}
+
+@media only screen 
+  and (max-width: 680px)
+{
+      #content {
+        top:50px;
+        height: calc(100% - 50px);
+        height: -o-calc(100% - 50px); /* opera */
+        height: -webkit-calc(100% - 50px); /* google, safari */
+        height: -moz-calc(100% - 50px); /* firefox */   
+      }
+
+      nav {
+          height:50px;
+      }
+
+      nav ul li {
+        margin:0 5px;
+        }
+
+      nav ul li a {
+          font-size: 1.2rem;
+      }
+
+      .njm-logo {
+        width:60px;
+        }
+    
+    .tidvis-logo {
+        width:30px;
+    }
+    
+      #logo img {
+        width:47px;
+      }
+
+      #logo:first-child h1 { 
+        font-size:2.3rem;
+        margin-top:10px;
+
+      }
+
+      nav ul {
+        top:28px;
+        right:30px;
+      }
+
+}
+
+@media only screen 
+  and (max-width: 480px)
+{
+
+    .site-nav {
+        position:fixed;
+        z-index:700;
+        width:100%;
+        height:100%;
+        /*top:-150px;*/
+        top:50px;
+        left:-100%;
+        transition: left ease-in-out 200ms;
+    }
+
+    .site-nav ul {
+        text-align:center;
+        width:100%;
+        right:0px;
+        left:0px;
+        top:0px;
+        background-color: white;
+    }
+
+    .site-nav ul li {
+        float: none;
+        width:100%;
+        left:0px;
+        margin:0px;
+    }
+
+    .site-nav ul li a {
+        -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+        display:block;
+        padding:15px 30px;
+    }
+
+    .site-nav a:hover,
+    .site-nav a:focus {
+        background:black;
+    }
+
+    .site-nav--open {
+        top:50px;
+        left:0px;
+    }
+
+    .site-nav-inner {
+        overflow:scroll; -webkit-overflow-scrolling:touch;
+    }
+
+    .menu-toggle {
+        padding: 10px 7px;
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        cursor: pointer;
+        z-index:1000;
+    }
+
+    .hamburger,
+    .hamburger::before,
+    .hamburger::after {
+        content: '';
+        display: block;
+        background: black;
+        height: 3px;
+        width: 20px;
+        border-radius: 3px;
+        transition: all ease-in-out 200ms;
+    }
+
+    .hamburger::before {
+        transform: translateY(-6px);
+    }
+
+    .hamburger::after {
+        transform: translateY(3px);
+    }
+
+    .open .hamburger {
+        transform: rotate(45deg);
+    }
+
+    .open .hamburger::after {
+        transform: translateY(-3px) rotate(-90deg);
+    }
+
+    .open .hamburger::before {
+        opacity:0;
+    }
+
+}

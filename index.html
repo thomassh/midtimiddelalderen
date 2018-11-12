@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta property="og:title" content="Midt i middelalderen">
+	<meta property="og:description" content="En interaktiv historieopplevelse.">
+	<meta property="og:image" content="https://midtimiddelalderen.no/img/midtimiddelalderen.jpg">
+	<meta property="og:url" content="https://midtimiddelalderen.no">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1" />
+	<meta charset="UTF-8">
+
+<title>Midt i middelalderen</title>
+
+<link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="css/midtimiddelalderen.min.css" />
+<link rel="icon" type="image/png" href="https://www.midtimiddelalderen.no/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://www.midtimiddelalderen.no/favicon-16x16.png" sizes="16x16" />
+
+</head>
+
+<body>
+
+	<nav>
+
+		<div id="logo">
+			<img src="../img/m_logo_thick.svg" alt="Midt i middelalderen"/><a href="index.html"><h1>idt i middelalderen</h1></a>
+		</div>
+
+		<div class="site-nav">
+			<div class="site-nav-inner">
+				<ul>
+					<li><a href="index.html">Kart</a></li>
+					<li><a href="hva" class="ajax">Hva er dette?</a></li>
+					<!--<li><a href="kilder" class="ajax">Kilder</a></li>-->
+					<li><a href="img/AR-kart-middelalder.pdf" target="_blank">Print AR-kart</a></li>
+				</ul>
+			</div>
+		</div>
+
+	</nav>
+		
+		<div class="menu-toggle">
+			<div class="hamburger"></div>
+		</div>
+
+
+<div id="content"></div>
+
+<script src="js/jquery-3.3.1.min.js"></script>
+
+<script async>
+	function loadMap() {
+		$('#content').load('kart.html');
+	};
+
+	loadMap();
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQeOCQuyykCzjnb2M874aEVpHTl3RRR6Y"></script>
+
+<script async src="js/midtimiddelalderen.min.js"></script>
+
+<script>
+
+		$('.menu-toggle').click(function() {
+			$('.site-nav').toggleClass('site-nav--open');
+			$(this).toggleClass('open');
+		});
+	
+		$('.site-nav a').click(function(){
+			$('.site-nav').toggleClass('site-nav--open');
+			$('.menu-toggle').toggleClass('open');
+		});
+		
+		// handle menu clicks
+		$('.ajax').click(function() {
+			var page = $(this).attr('href');
+			$('#content').load(page + '.html');
+			//Stop normal link behaviour
+			return false;
+			
+		});
+
+			/*$('.kart').click(function() {
+				location.reload();
+				//Stop normal link behaviour
+				return false;
+			
+			});*/
+
+				
+</script>
+
+</body>
+	
+</html>
