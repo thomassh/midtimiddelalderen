@@ -146,28 +146,55 @@ nav ul li a:hover {
     margin:17px 0px 0px 3px;
 }
 
+/*#madeby {
+    position:absolute;
+    right:10px;
+    bottom:25px;
+    z-index:100;
+    width:100px;
+    padding:10px;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.logos {
+    position:relative;
+    width:80px;
+    height:auto;
+    cursor:pointer;
+    float:right;
+    margin-top:10px;
+}*/
+
 #madeby {
     position:absolute;
     right:10px;
     bottom:25px;
     z-index:100;
-    padding:10px;
+    width:50px;
+    padding:5px;
     background: rgba(255, 255, 255, 0.5);
 }
 
-.njm-logo {
+.logos {
     position:relative;
-    width:80px;
+    width:40px;
     height:auto;
-    margin-left:10px;
+    cursor:pointer;
+    float:right;
+    margin-top:10px;
 }
 
 .tidvis-logo {
-    position:relative;
+    right:0px;
     width:40px;
-    float:left;
-    cursor: pointer;
+    margin-top:0px;
 }
+
+/*.tidvis-logo {
+    right:20px;
+    width:40px;
+    margin-top:0px;
+}*/
 
 .tidvis-logo path {
     transition: fill ease-in-out .3s ;
@@ -204,24 +231,96 @@ nav ul li a:hover {
 }
 
 /*iframes*/
-.gm-style-iw {
+/*.custom-window {
+    /*top: 15px !important;*/
+	/*background-color:#45C9B7 !important;
+    box-shadow: 0 0px 6px rgba(0, 0, 0, 0.5);
+    padding:0px !important;
+    text-align:center;
+    /*padding-top:10px;*/
+    /*border-radius: 10px 10px 10px 10px;
+}*/
+
+.custom-close {
+    opacity: 1;
+    right: -5px;
+    top: -5px;
+    position:absolute;
+    outline:none;
+    width: 23px;
+    height: 23px;
+    background-image: url(../img/x.svg);
+    border: 5px solid #45C9B7;
+    border-radius: 50%;
+    box-shadow: 0 0 5px black;
+    background-color: #45C9B7;
+    overflow: hidden;
+    cursor:pointer;
+}
+
+.custom-close:hover {
+    background-color:#E6AE44;
+    border: 5px solid #E6AE44;
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+/*.gm-style .gm-style-iw {
 	top: 15px !important;
-	background-color:#45C9B7;
+	background-color:#45C9B7 !important;
 	box-shadow: 0 0px 6px rgba(0, 0, 0, 0.5);
     text-align:center;
     padding-top:10px;
-	border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.gm-style-iw-c .gm-style-iw-d #iw-container .iw-content {
+    background-color:#45C9B7 !important;
+}*/
+
+/*.gm-style-iw::after {
+      content: '';
+      width: 0;
+      height: 0;
+      border: 22px solid transparent;
+      border-top-color: black;
+      z-index: 4;
+      top: auto;
+      bottom: -53px;
+      margin: auto;
+}*/
+
+.gm-style-mtc > div,
+.gmnoprint > div,
+.gm-svpc,
+.gm-fullscreen-control,
+.gm-control-active
+{
+  background-color: #E6AE44 !important;
+}
+
+.custom-label {
+    color: black;
+    font-size: 1.0rem;
+    font-family: 'Open Sans', sans-serif;
+    text-align:center;
+    padding:3px;
+    border:1px solid #45C9B7;
+    width:110px;
+    background-color: #E6AE44;
 }
 
 .iw-title {
     font-size: 1.6rem;
+    text-align:center;
     font-family: 'Open Sans', sans-serif;
     padding:5px;
     padding-bottom:7px;
     color: black;
 }
 
-#iw-container {
+.info-window-container {
     margin: 0px !important;
     padding:0px !important;
     overflow-x: hidden;
@@ -231,6 +330,7 @@ iframe {
     padding:0px !important;
     margin:0px !important;
     max-width:100% !important;
+    background-color:#45C9B7 !important;
 }
 
 @media only screen 
@@ -256,12 +356,18 @@ iframe {
           font-size: 1.2rem;
       }
 
-      .njm-logo {
-        width:60px;
-        }
-    
+      #madeby {
+        width:50px;
+        padding:5px;
+    }
+
+    .logos {
+        width:40px;
+    }
+
     .tidvis-logo {
-        width:30px;
+        right:0px;
+        width: 40px;
     }
     
       #logo img {

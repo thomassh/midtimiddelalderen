@@ -22,13 +22,14 @@ var map;
 
 function initMap() {
 
-  var center = { lat: 59.904200, lng: 10.763091 }
+  var center = { lat: 59.905000, lng: 10.764500 }
   var options = {
     center: center,
     zoom: 17,
     //minZoom: 16,
     //maxZoom: 18,
     mapTypeId: 'satellite',
+    rotateControl: false,
     tilt: 0,
     streetViewControl: false,
     /*streetViewControlOptions: {
@@ -37,22 +38,22 @@ function initMap() {
     zoomControl: true,
     zoomControlOptions: {
       position: google.maps.ControlPosition.TOP_RIGHT
-  },
+    },
     mapTypeControl: false,
     fullscreenControl: true,
-    gestureHandling: "greedy"
+    gestureHandling: 'greedy'
   }
 
   map = new google.maps.Map(document.getElementById('map'), options)
   
    //Overlay
    var bounds = new google.maps.LatLngBounds(
-    new google.maps.LatLng(59.902595, 10.760920),
-    new google.maps.LatLng(59.907240, 10.769850)
+    new google.maps.LatLng(59.902597, 10.760970),
+    new google.maps.LatLng(59.907220, 10.769790)
   )
 
   // The overlay
-  var srcImage = '../img/mimkart2.svg'
+  var srcImage = '../img/mimkart3.svg'
 
   // The custom overlay object contains the overlay,
   // the bounds of the image, and a reference to the map.
@@ -61,6 +62,7 @@ function initMap() {
   var icons = {
     marker3d: '3d-punkt.svg',
     marker360: '3d-punkt.svg',
+    markerFoto: '3d-punkt.svg',
     markerFilm: 'film-punkt.svg',
     markerSpill: 'spill-punkt.svg',
   }
@@ -68,32 +70,84 @@ function initMap() {
   var features = [
  
      {
-      lat: 59.903450,
-      lng: 10.761460,
+      lat: 59.903495,
+      lng: 10.761470,
       type: 'marker360',
-      data: { id: '7P2V5', title: 'Inne i Mariakirken' }
+      data: { id: '7P2V5', title: 'Inne i Mariakirken' },
+      label: '360º: Mariakirken'
       //Inne i Mariakirken 360
     },
     {
       lat: 59.903620,
       lng: 10.762160,
       type: 'marker3d',
-      data: { id: 'cb86c7b100834cfcbeef0d151ef619a6', title: 'Mariakirken' }
+      data: { id: 'cb86c7b100834cfcbeef0d151ef619a6', title: 'Mariakirken' },
+      label: '3D: Mariakirken'
       //Mariakirken 3D
     },
     {
-      lat: 59.905770,
-      lng: 10.762086,
+      lat: 59.905690,
+      lng: 10.762486,
       type: 'marker3d',
-      data: { id: '429605d3354343e391bc11aac896c589', title: 'Sjøboder og brygge' }
+      data: { id: '429605d3354343e391bc11aac896c589', title: 'Sjøboder og brygge' },
+      label: '3D: Sjøboder'
       //Sjøboder 3D
     },
     {
       lat: 59.904232,
       lng: 10.761228,
       type: 'marker3d',
-      data: { id: 'a4eb2e9ab5754fc3a4e4cf9fd63edf40', title: 'Middelalderbåt' }
+      data: { id: 'a4eb2e9ab5754fc3a4e4cf9fd63edf40', title: 'Middelalderbåt' },
+      label: '3D: Middelalderbåt'
       //Middelalderbåt 3D
+    },
+    {
+      lat: 59.906032,
+      lng: 10.767468,
+      type: 'marker3d',
+      data:  { id: 'f956368d3acb4600b7a04d0596ad8ac7', title: 'Ladegårdens kjeller' },
+      label: '3D: Kjeller'
+      //Kjeller 3D Ladegården
+    },
+    {
+      lat: 59.906500,
+      lng: 10.768990,
+      type: 'marker3d',
+      data:  { id: '264a0df6f9f7412a8945b7a183436175', title: 'Olavsklosteret' },
+      label: '3D: Olavsklosteret'
+      //Olavsklosteret 3D Ladegården
+    },
+    {
+      lat: 59.906032,
+      lng: 10.764468,
+      type: 'marker3d',
+      data: { id: '1ab638b32bc54e8ba3120a6abb24d5f4', title: 'Fjøs' },
+      label: '3D: Fjøs'
+      //Fjøs 3D NIKU
+    },
+    {
+      lat: 59.906032,
+      lng: 10.765768,
+      type: 'marker3d',
+      data:  { id: '7cfac08ef4db4a4e8ff725856d0699d1', title: 'Bispeallmenningen' },
+      label: '3D: Gateparti'
+      //Bispeallmenningen 3D NIKU
+    },
+    {
+      lat: 59.905332,
+      lng: 10.765500,
+      type: 'markerFoto',
+      data:  { id: 'jernbanemuseet_sørenga.png', title: 'Fra utgravningen av jernbanen' },
+      label: 'Foto: Utgravninger'
+      //Fra utgravingen av jernbanen Foto Jernbanemusset
+    },
+    {
+      lat: 59.904032,
+      lng: 10.763600,
+      type: 'markerFoto',
+      data:  { id: 'jernbanemuseet_damplokomotiv.png', title: 'Damplokomotiv' },
+      label: 'Foto: Damplokomotiv'
+      //Damplokomotiv Foto Jernbanemuseet
     }
     /*{
       lat: 59.9108202,
@@ -114,47 +168,119 @@ function initMap() {
   var templates = {
 
     marker3d: function(data) {
-      return `<div id="iw-container"><div class="iw-content"><div class="sketchfab-embed-wrapper"><iframe width="380" height="280" 
+      return `<div class="info-window-container"><div class="sketchfab-embed-wrapper"><iframe width="380" height="280" 
       src="https://sketchfab.com/models/${data.id}/embed?annotation_cycle=8" frameborder="0" 
       allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" 
-      onmousewheel=""></iframe></div><div class="iw-title"><p>${data.title}</p></div></div>`
+      onmousewheel=""></iframe><div class="iw-title"><p>${data.title}</p></div></div>`
     },
 
-    marker360: function (data){return `<div id="iw-container"><div class="iw-content"><iframe width="380" height="280"
+    markerFoto: function(data) {
+      return `<div class="info-window-container"><img src="../img/${data.id}" width="380" height="auto"></img><div class="iw-title"><p>${data.title}</p></div></div>`
+    },
+
+    /*markerFoto: function(data) {
+      return `<div id="iw-container"><div class="iw-content"><img src="../img/${data.id}" width="380" height="auto"></img><div class="iw-title"><p>${data.title}</p></div></div></div`
+    },*/
+
+    marker360: function (data){return `<div class="info-window-container"><iframe width="380" height="280"
       style="width: 380px; height: 280px; border: none;" frameborder="0" allow="vr,gyroscope,accelerometer,fullscreen"
       scrolling="no" allowfullscreen="true" style="max-width: 100%;" 
-      src="https://kuula.co/share/${data.id}?fs=1&vr=1&iosfs=1&thumbs=1&hideinst=1&chromeless=1&logo=-1"></iframe><div class="iw-title"><p>${data.title}</p></div></div></div>`
+      src="https://kuula.co/share/${data.id}?fs=1&vr=1&iosfs=1&thumbs=1&hideinst=1&chromeless=1&logo=-1"></iframe><div class="iw-title"><p>${data.title}</p></div></div>`
     },
   
     markerFilm: function(data) {
-      return `<div id="iw-container"><div class="iw-content"><iframe width="560" height="315" src="https://www.youtube.com/embed/${data.id}?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><div class="iw-title"><p>${data.title}</p></div></div></div>`
+      return `<iframe width="560" height="315" src="https://www.youtube.com/embed/${data.id}?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><div class="iw-title"><p>${data.title}</p></div>`
     },
   
     markerSpill: function(data) {
-      return `<div id="iw-container"><div class="iw-content"><iframe width="560" height="350"
-      src="${data.id}" style="border:0"></iframe><div class="iw-title"><p>${data.title}</p></div></div></div>`
+      return `<iframe width="560" height="350"
+      src="${data.id}" style="border:0"></iframe><div class="iw-title"><p>${data.title}</p></div>`
     }
 
   }
 
-  var infoWindow = new google.maps.InfoWindow();
+
+
+  //var infoWindow = new google.maps.InfoWindow();
 
   features.forEach(function (feature) {
-    var marker = new google.maps.Marker({
+    var marker = new MarkerWithLabel({
       position: new google.maps.LatLng(feature.lat, feature.lng),
       icon: {
         url: '/img/' + icons[feature.type],
-        scaledSize: new google.maps.Size(35, 35)
+        scaledSize: new google.maps.Size(50, 50),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(25, 50)
       },
-      map
+      labelContent: '' + [feature.label],
+      labelAnchor: new google.maps.Point(55, 68),
+      labelClass: 'custom-label',
+      labelInBackground: true,
+      map,
+      animation: google.maps.Animation.DROP
     })
+
+     // Set up handle bars
+     //var template = Handlebars.compile($('#marker-content-template').html());
+
+       // Set up a close delay for CSS animations
+    var infoWindow = null;
+    var closeDelayed = false;
+    var closeDelayHandler = function() {
+        $(infoWindow.getWrapper()).removeClass('active');
+        setTimeout(function() {
+            closeDelayed = true;
+            infoWindow.close();
+        }, 300);
+    };
+
+    // Add a Snazzy Info Window to the marker
+   var infoWindow = new SnazzyInfoWindow({
+    marker: marker,
+    wrapperClass: 'custom-window',
+    closeWhenOthersOpen: 'true',
+    offset: {
+        top: '-60px'
+    },
+    edgeOffset: {
+        top: 50,
+        right: 60,
+        bottom: 50
+    },
+    border: false,
+    closeButtonMarkup: '<button type="button" class="custom-close"></button>',
+    callbacks: {
+        open: function() {
+            $(this.getWrapper()).addClass('open');
+        },
+        afterOpen: function() {
+            var wrapper = $(this.getWrapper());
+            wrapper.addClass('active');
+            wrapper.find('.custom-close').on('click', closeDelayHandler);
+        },
+        beforeClose: function() {
+            if (!closeDelayed) {
+                closeDelayHandler();
+                return false;
+            }
+            return true;
+        },
+        afterClose: function() {
+            var wrapper = $(this.getWrapper());
+            wrapper.find('.custom-close').off();
+            wrapper.removeClass('open');
+            closeDelayed = false;
+        }
+    }
+});
+
+
 
     marker.addListener('click', function () {
       var template = templates[feature.type];
       var content = template(feature.data);
       infoWindow.setContent(content);
       infoWindow.open(map, marker);
-
     });
     
 
@@ -162,16 +288,17 @@ function initMap() {
 
 
 
-  google.maps.event.addListener(infoWindow, 'domready', function() {
+
+ /* google.maps.event.addListener(infoWindow, 'domready', function() {
 
     // Reference to the DIV that wraps the bottom of infowindow
-    var iwOuter = $('.gm-style-iw');
+    var iwOuter = $('.gm-style-iw-d');
 
     /* Since this div is in a position prior to .gm-div style-iw.
      * We use jQuery and create a iwBackground variable,
      * and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
     */
-    var iwBackground = iwOuter.prev();
+  /*  var iwBackground = iwOuter.prev();
 
     // Removes background shadow DIV
     iwBackground.children(':nth-child(2)').css({'display' : 'none'});
@@ -197,7 +324,7 @@ function initMap() {
     iwCloseBtn.mouseout(function(){
       $(this).css({opacity: '1'});
     });
-  });
+  });*/
 
 } //End of initMap
 
@@ -294,5 +421,5 @@ MimOverlay.prototype.toggle = function() {
   }
 };
 
-// google.maps.event.addDomListener(window, 'load', initMap);
-initMap();
+//google.maps.event.addDomListener(window, 'load', initMap);
+//initMap();
